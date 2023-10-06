@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://18u54tqvmnum"]
+
+[ext_resource type="PackedScene" uid="uid://f2ithonn4o4l" path="res://enemies/enemy_base.tscn" id="1_bb4dq"]
+[ext_resource type="Script" path="res://enemies/purple_enemy/purple_enemy.gd" id="2_q441h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dimo8"]
+radius = 19.0263
+
+[node name="purple_enemy" instance=ExtResource("1_bb4dq")]
+script = ExtResource("2_q441h")
+
+[node name="texture" parent="." index="0"]
+region_rect = Rect2(139, 523, 42, 42)
+
+[node name="collision" parent="." index="2"]
+shape = SubResource("CircleShape2D_dimo8")
+
+[node name="navigation" type="NavigationAgent2D" parent="." index="3"]
+path_postprocessing = 1
+radius = 64.0
+debug_enabled = true
+debug_path_custom_color = Color(1, 0.160784, 1, 1)

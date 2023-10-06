@@ -1,0 +1,146 @@
+[gd_scene load_steps=7 format=3 uid="uid://n2eouqmkmmbx"]
+
+[ext_resource type="PackedScene" uid="uid://bhh3fw8cse4bc" path="res://weapons/weapon_template.tscn" id="1_2cf7a"]
+
+[sub_resource type="Animation" id="Animation_vfwvx"]
+resource_name = "attack"
+length = 0.17
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon_texture:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -25), Vector2(0, -5), Vector2(0, -50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("arm_1:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, -25)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("arm_2:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, -25)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("attack_area/collision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+
+[sub_resource type="Animation" id="Animation_guv8q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon_texture:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("arm_1:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("arm_2:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("attack_area/collision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gn64r"]
+_data = {
+"RESET": SubResource("Animation_guv8q"),
+"attack": SubResource("Animation_vfwvx")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hsiwg"]
+size = Vector2(20, 95)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_llqvh"]
+radius = 89.4539
+
+[node name="spear" instance=ExtResource("1_2cf7a")]
+
+[node name="weapon_texture" parent="." index="0"]
+offset = Vector2(0, -25)
+region_rect = Rect2(218, 577, 12, 62)
+
+[node name="arm_1" parent="." index="1"]
+z_index = -1
+position = Vector2(0, -21)
+region_rect = Rect2(472, 536, 17, 17)
+
+[node name="arm_2" parent="." index="2"]
+region_rect = Rect2(472, 536, 17, 17)
+
+[node name="animation" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_gn64r")
+}
+
+[node name="collision" type="CollisionShape2D" parent="attack_area" index="0"]
+position = Vector2(0, -37.5)
+shape = SubResource("RectangleShape2D_hsiwg")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" index="0"]
+shape = SubResource("CircleShape2D_llqvh")

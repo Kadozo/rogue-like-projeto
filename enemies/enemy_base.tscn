@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://f2ithonn4o4l"]
+
+[ext_resource type="Texture2D" uid="uid://dumkfs18bpye6" path="res://assets/Tilesheet/tilesheet.png" id="1_vwqbw"]
+
+[node name="enemy_base" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+
+[node name="texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_vwqbw")
+region_enabled = true
+
+[node name="animation" type="AnimationPlayer" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="."]

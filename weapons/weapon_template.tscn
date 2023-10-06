@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhh3fw8cse4bc"]
+
+[ext_resource type="Texture2D" uid="uid://dumkfs18bpye6" path="res://assets/Tilesheet/tilesheet.png" id="1_x1m03"]
+
+[node name="WeaponTemplate" type="Node2D"]
+
+[node name="weapon_texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_x1m03")
+region_enabled = true
+
+[node name="arm_1" type="Sprite2D" parent="."]
+texture = ExtResource("1_x1m03")
+region_enabled = true
+
+[node name="arm_2" type="Sprite2D" parent="."]
+texture = ExtResource("1_x1m03")
+region_enabled = true
+
+[node name="animation" type="AnimationPlayer" parent="."]
+
+[node name="attack_area" type="Area2D" parent="."]
+
+[node name="detection_area" type="Area2D" parent="."]
