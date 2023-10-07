@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://4kgr5jnlaqhk"]
+[gd_scene load_steps=6 format=3 uid="uid://4kgr5jnlaqhk"]
 
 [ext_resource type="PackedScene" uid="uid://f2ithonn4o4l" path="res://enemies/enemy_base.tscn" id="1_hnbkv"]
-[ext_resource type="Script" path="res://enemies/red_enemy/red_enemy.gd" id="2_et1yw"]
 
 [sub_resource type="Animation" id="Animation_j6j1e"]
 length = 0.001
@@ -68,7 +67,6 @@ _data = {
 radius = 20.025
 
 [node name="red_enemy" instance=ExtResource("1_hnbkv")]
-script = ExtResource("2_et1yw")
 
 [node name="texture" parent="." index="0"]
 region_rect = Rect2(11, 523, 42, 42)

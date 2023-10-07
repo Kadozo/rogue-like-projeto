@@ -1,16 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3kwi1xt14qf0"]
+[gd_scene load_steps=5 format=3 uid="uid://c3kwi1xt14qf0"]
 
 [ext_resource type="PackedScene" uid="uid://dh0ovl5hjbjgh" path="res://terrains/level_01.tscn" id="1_k2iv2"]
 [ext_resource type="PackedScene" uid="uid://bfeeil6j0b8pn" path="res://player/player.tscn" id="2_jbgs7"]
+[ext_resource type="PackedScene" uid="uid://4kgr5jnlaqhk" path="res://enemies/red_enemy/red_enemy.tscn" id="4_a8bu6"]
 [ext_resource type="PackedScene" uid="uid://18u54tqvmnum" path="res://enemies/purple_enemy/purple_enemy.tscn" id="4_xci6a"]
 
 [node name="GameLevel" type="Node2D"]
 
 [node name="Level_01" parent="." instance=ExtResource("1_k2iv2")]
 cell_quadrant_size = 64
+navigation_visibility_mode = 0
 
 [node name="player" parent="." instance=ExtResource("2_jbgs7")]
 position = Vector2(912, 581)
 
 [node name="purple_enemy" parent="." instance=ExtResource("4_xci6a")]
-position = Vector2(197, 117)
+position = Vector2(165, 124)
+
+[node name="red_enemy" parent="." instance=ExtResource("4_a8bu6")]
+position = Vector2(368, 160)

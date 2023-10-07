@@ -1,18 +1,85 @@
-[gd_scene load_steps=4 format=3 uid="uid://18u54tqvmnum"]
+[gd_scene load_steps=6 format=3 uid="uid://18u54tqvmnum"]
 
 [ext_resource type="PackedScene" uid="uid://f2ithonn4o4l" path="res://enemies/enemy_base.tscn" id="1_bb4dq"]
-[ext_resource type="Script" path="res://enemies/purple_enemy/purple_enemy.gd" id="2_q441h"]
+
+[sub_resource type="Animation" id="Animation_p3dpd"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 0.7), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tmmoy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ab0r"]
+_data = {
+"RESET": SubResource("Animation_tmmoy"),
+"default": SubResource("Animation_p3dpd")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dimo8"]
 radius = 19.0263
 
 [node name="purple_enemy" instance=ExtResource("1_bb4dq")]
-script = ExtResource("2_q441h")
+_enemy_type = "chase_and_dash"
 
 [node name="texture" parent="." index="0"]
 region_rect = Rect2(139, 523, 42, 42)
 
+[node name="animation" parent="." index="1"]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_4ab0r")
+}
+
 [node name="collision" parent="." index="2"]
+visible = false
 shape = SubResource("CircleShape2D_dimo8")
 
 [node name="navigation" type="NavigationAgent2D" parent="." index="3"]
@@ -20,3 +87,8 @@ path_postprocessing = 1
 radius = 64.0
 debug_enabled = true
 debug_path_custom_color = Color(1, 0.160784, 1, 1)
+
+[node name="range_area" parent="." index="4"]
+visible = false
+collision_layer = 0
+collision_mask = 2

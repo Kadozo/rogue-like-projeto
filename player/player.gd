@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @export_category("Variables")
-@export var _move_speed:float = 200
+@export var _move_speed:float = 256
 
 
 func _physics_process(delta:float) -> void:
